@@ -42,68 +42,6 @@
             flex-direction: column;
         }
         
-        /* Instagram Browser Warning */
-        .ig-browser-warning {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--white);
-            z-index: 10000;
-            padding: 2rem;
-            text-align: center;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .ig-warning-content {
-            max-width: 500px;
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .ig-warning-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
-        
-        .ig-warning-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--black);
-        }
-        
-        .ig-warning-text {
-            color: var(--gray-600);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-        
-        .ig-warning-button {
-            display: inline-block;
-            background: var(--black);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-            border: 2px solid var(--black);
-        }
-        
-        .ig-warning-button:hover {
-            background: transparent;
-            color: var(--black);
-        }
-        
         /* Header */
         .header {
             padding: 1.5rem 5%;
@@ -572,14 +510,6 @@
                 padding: 0.6rem 0.8rem;
                 font-size: 0.8rem;
             }
-            
-            .ig-warning-content {
-                padding: 1.5rem;
-            }
-            
-            .ig-warning-title {
-                font-size: 1.5rem;
-            }
         }
         
         /* Animation */
@@ -598,22 +528,6 @@
     </style>
 </head>
 <body>
-    <!-- Instagram Browser Warning -->
-    <div class="ig-browser-warning" id="igWarning">
-        <div class="ig-warning-content">
-            <div class="ig-warning-icon">
-                <i class="fas fa-external-link-alt"></i>
-            </div>
-            <h2 class="ig-warning-title">Open in Browser</h2>
-            <p class="ig-warning-text">For the best experience viewing the HabitZen waitlist, please open this page in your browser instead of the Instagram app.</p>
-            <a href="#" class="ig-warning-button" id="openInBrowser">Open in Browser</a>
-            <p class="ig-warning-text" style="font-size: 0.9rem; margin-top: 1.5rem;">
-                Tap the menu icon (⋮) in the top right and select "Open in Browser"
-            </p>
-        </div>
-    </div>
-
-    <!-- Main Content -->
     <header class="header">
         <a href="#" class="logo">
             <i class="fas fa-leaf logo-icon"></i>
@@ -795,18 +709,8 @@
     </div>
 
     <script>
-        // Detect Instagram in-app browser
-        function isInstagramBrowser() {
-            return navigator.userAgent.includes("Instagram");
-        }
-        
-        // Show Instagram browser warning if needed
+        // Simple animation trigger
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if we're in Instagram's browser
-            if (isInstagramBrowser()) {
-                document.getElementById('igWarning').style.display = 'flex';
-            }
-            
             const animatedElements = document.querySelectorAll('.animated');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
@@ -833,12 +737,6 @@
             
             // Set up social media links to open apps
             setupSocialLinks();
-            
-            // Set up open in browser button
-            document.getElementById('openInBrowser').addEventListener('click', function(e) {
-                e.preventDefault();
-                window.open(window.location.href, '_blank');
-            });
         });
         
         // Setup social media links to open apps correctly
