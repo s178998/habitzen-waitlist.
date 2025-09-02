@@ -1,164 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HabitZen - Build Better Habits</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --black: #000000;
-      --white: #ffffff;
-      --gray-100: #f7f7f7;
-      --gray-200: #e5e5e5;
-      --gray-600: #666666;
-      --gray-800: #333333;
-      --accent: #2f80ed;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--black);
-      background: var(--white);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .hero {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 3rem 1.5rem;
-    }
-
-    .logo {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -1px;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--black), var(--gray-600));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      font-weight: 400;
-      color: var(--gray-600);
-      margin-bottom: 2.5rem;
-      line-height: 1.4;
-    }
-
-    .mockup-placeholder {
-      width: clamp(220px, 35vw, 300px);
-      aspect-ratio: 9 / 16;
-      background: var(--gray-100);
-      border: 2px solid var(--gray-200);
-      border-radius: 40px;
-      margin: 2rem auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .mockup-placeholder::after {
-      content: '📱 HabitZen App Preview';
-      color: var(--gray-600);
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 0 1rem;
-    }
-
-    .description {
-      color: var(--gray-800);
-      font-size: clamp(1rem, 2.2vw, 1.2rem);
-      margin: 2rem 0;
-      line-height: 1.6;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .form-container {
-      background: var(--gray-100);
-      padding: 2rem;
-      border-radius: 20px;
-      border: 1px solid var(--gray-200);
-      max-width: 650px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .form-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: var(--black);
-    }
-
-    iframe {
-      width: 100%;
-      border: none;
-      height: 420px;
-      border-radius: 12px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      color: var(--gray-600);
-      font-size: 0.85rem;
-      border-top: 1px solid var(--gray-200);
-      margin-top: auto;
-    }
-
-    @media (max-width: 768px) {
-      .form-container {
-        padding: 1.25rem;
-      }
-
-      iframe {
-        height: 360px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabitZen - Build Better Habits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --accent: #000000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        .header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--black);
+            text-decoration: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 2rem;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--white), var(--gray-50));
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--black), var(--gray-700));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--gray-600);
+            margin-bottom: 3rem;
+            line-height: 1.4;
+        }
+        
+        /* Mockup */
+        .mockup-container {
+            margin: 3rem 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .mockup-placeholder {
+            width: 280px;
+            height: 560px;
+            background: var(--gray-100);
+            border: 2px solid var(--gray-200);
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mockup-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 60%;
+            height: 30px;
+            background: var(--gray-200);
+            border-radius: 0 0 15px 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .mockup-placeholder::after {
+            content: 'HabitZen App Preview';
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        
+        .mockup-screen {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        
+        .mockup-content {
+            text-align: center;
+        }
+        
+        .mockup-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--gray-800);
+        }
+        
+        .mockup-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            background: var(--gray-50);
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .feature-icon {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Form Section */
+        .form-section {
+            padding: 4rem 2rem;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+        }
+        
+        .form-container {
+            max-width: 500px;
+            width: 100%;
+            background: var(--gray-50);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+        
+        .form-description {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+        }
+        
+        .form-frame {
+            width: 100%;
+            height: 500px;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            background: var(--white);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            background: var(--gray-900);
+            color: var(--gray-400);
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .mockup-placeholder {
+                width: 240px;
+                height: 480px;
+                border-radius: 30px;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .form-section {
+                padding: 2rem 1rem;
+            }
+            
+            .mockup-placeholder {
+                width: 200px;
+                height: 420px;
+            }
+            
+            .mockup-screen {
+                top: 60px;
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--black);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: var(--black);
+        }
+    </style>
 </head>
 <body>
-  <section class="hero">
-    <h1 class="logo">HabitZen</h1>
-    <p class="subtitle">Build better habits. Effortlessly. Coming Soon.</p>
+    <header class="header">
+        <a href="#" class="logo">HabitZen</a>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-title animated">Build better habits.<br>Effortlessly.</h1>
+            <p class="subtitle animated delay-1">The simple, powerful habit tracker that helps you win your day.<br>Coming soon to iOS and Android.</p>
+            
+            <div class="mockup-container animated delay-2">
+                <div class="mockup-placeholder">
+                    <div class="mockup-screen">
+                        <div class="mockup-content">
+                            <h3>Your Daily Habits</h3>
+                            <div class="mockup-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">☀️</span> Morning meditation
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">💧</span> Drink water
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">📖</span> Read 20 minutes
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">🏃</span> Exercise
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#signup" class="cta-button animated delay-3">Join the Waitlist</a>
+        </div>
+    </section>
+    
+    <section class="form-section" id="signup">
+        <div class="form-container">
+            <h2 class="form-title">Get Early Access</h2>
+            <p class="form-description">Be the first to know when HabitZen launches and get exclusive early access.</p>
+            
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWLtijgCBrf3dDhLhpPsV_PGAas51willNW7yrTLdd1vtqnA/viewform?embedded=true" 
+                    class="form-frame" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+                Loading…
+            </iframe>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 HabitZen. A better way to build routines.</p>
+        </div>
+    </footer>
 
-    <div class="mockup-placeholder"></div>
-
-    <p class="description">
-      HabitZen is the simple, powerful tracker that helps you win your day.<br>
-      Join the waitlist for exclusive early access.
-    </p>
-
-    <div class="form-container">
-      <h3 class="form-title">Join the Waitlist</h3>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWLtijgCBrf3dDhLhpPsV_PGAas51willNW7yrTLdd1vtqnA/viewform?embedded=true">Loading…</iframe>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 HabitZen. A better way to build routines.
-  </footer>
+    <script>
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                animatedElements.forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 100);
+        });
+    </script>
 </body>
 </html>
