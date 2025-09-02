@@ -290,7 +290,7 @@
         
         .counter-number {
             font-weight: 700;
-            color: "#fff";
+            color: var(--white);
         }
         
         .form-frame {
@@ -636,9 +636,9 @@
                 <h3 class="footer-heading">HabitZen</h3>
                 <p>Building better habits for a better you. Simple, effective habit tracking for everyone.</p>
                 <div class="social-links">
-                    <a href="https://twitter.com/" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://facebook.com/" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20HabitZen%20-%20the%20best%20way%20to%20build%20habits!&url=https://habitzen-waitlist.com" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="instagram://user?username=habitzen" class="social-link" id="instagram-link"><i class="fab fa-instagram"></i></a>
+                    <a href="fb://page/?id=habitzen" class="social-link" id="facebook-link"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
             
@@ -734,7 +734,43 @@
                     }
                 }, 3000);
             }
+            
+            // Set up social media links to open apps
+            setupSocialLinks();
         });
+        
+        // Setup social media links to open apps correctly
+        function setupSocialLinks() {
+            // Instagram link - try to open app, fall back to website
+            const instagramLink = document.getElementById('instagram-link');
+            if (instagramLink) {
+                instagramLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Try to open Instagram app
+                    window.location.href = 'instagram://user?username=habitzen';
+                    
+                    // If app doesn't open, redirect to web after delay
+                    setTimeout(function() {
+                        window.location.href = 'https://www.instagram.com/habitzen/';
+                    }, 500);
+                });
+            }
+            
+            // Facebook link - try to open app, fall back to website
+            const facebookLink = document.getElementById('facebook-link');
+            if (facebookLink) {
+                facebookLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Try to open Facebook app
+                    window.location.href = 'fb://page/?id=habitzen';
+                    
+                    // If app doesn't open, redirect to web after delay
+                    setTimeout(function() {
+                        window.location.href = 'https://www.facebook.com/habitzen/';
+                    }, 500);
+                });
+            }
+        }
         
         // Modal functions
         function showPrivacy() {
@@ -759,4 +795,3 @@
     </script>
 </body>
 </html>
-
