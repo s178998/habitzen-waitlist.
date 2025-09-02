@@ -1,0 +1,79 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabitZen - Build Better Habits</title>
+    <style>
+        /* Minimalist Black & White Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 5rem auto;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 3rem;
+        }
+        .mockup {
+            width: 300px;
+            height: 400px;
+            background-color: #f1f1f1; /* Light gray placeholder */
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border: 1px solid #ddd;
+        }
+        .form-container {
+            margin: 3rem auto;
+            width: 100%;
+        }
+        footer {
+            margin-top: 5rem;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HabitZen</h1>
+        <h2>Build better habits. Effortlessly. Coming Soon.</h2>
+        
+        <div class="mockup">
+            App Mockup Will Appear Here
+        </div>
+        
+        <p>HabitZen is the simple, powerful tracker that helps you win your day.<br>Join the waitlist for exclusive early access.</p>
+        
+        <!-- PASTE YOUR GOOGLE FORM EMBED CODE HERE -->
+        <div class="form-container">
+            <!-- REPLACE THIS COMMENT WITH YOUR COPIED GOOGLE FORM EMBED CODE -->
+        </div>
+        
+        <footer>
+            © 2025 HabitZen. A better way to build routines.
+        </footer>
+    </div>
+</body>
+</html>
