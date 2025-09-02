@@ -1,74 +1,170 @@
-index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HabitZen - Build Better Habits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Minimalist Black & White Styles */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #000;
-            background-color: #fff;
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-100: #f7f7f7;
+            --gray-200: #e5e5e5;
+            --gray-600: #666666;
+            --gray-800: #333333;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            text-align: center;
+            box-sizing: border-box;
         }
-        .container {
-            max-width: 600px;
-            margin: 5rem auto;
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 2rem;
         }
-        h1 {
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .logo {
             font-size: 3.5rem;
             font-weight: 700;
+            letter-spacing: -2px;
             margin-bottom: 1rem;
-            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--black), var(--gray-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        h2 {
-            font-size: 1.5rem;
+        
+        .subtitle {
+            font-size: 1.4rem;
             font-weight: 400;
-            color: #333;
+            color: var(--gray-600);
             margin-bottom: 3rem;
+            line-height: 1.4;
         }
-        .mockup {
-            width: 300px;
-            height: 400px;
-            background-color: #f1f1f1; /* Light gray placeholder */
+        
+        .mockup-placeholder {
+            width: 280px;
+            height: 500px;
+            background: var(--gray-100);
+            border: 2px solid var(--gray-200);
+            border-radius: 40px;
             margin: 2rem auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #999;
-            border: 1px solid #ddd;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-        .form-container {
-            margin: 3rem auto;
-            width: 100%;
+        
+        .mockup-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 60%;
+            height: 30px;
+            background: var(--gray-200);
+            border-radius: 0 0 15px 15px;
         }
-        footer {
-            margin-top: 5rem;
-            color: #999;
+        
+        .mockup-placeholder::after {
+            content: '📱 HabitZen App Preview';
+            color: var(--gray-600);
             font-size: 0.9rem;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        
+        .description {
+            color: var(--gray-800);
+            font-size: 1.1rem;
+            margin: 2.5rem 0;
+            line-height: 1.6;
+        }
+        
+        .form-container {
+            background: var(--gray-100);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .form-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+        }
+        
+        footer {
+            margin-top: 3rem;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .mockup-placeholder {
+                width: 220px;
+                height: 400px;
+                border-radius: 30px;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>HabitZen</h1>
-        <h2>Build better habits. Effortlessly. Coming Soon.</h2>
+        <h1 class="logo">HabitZen</h1>
+        <p class="subtitle">Build better habits. Effortlessly. Coming Soon.</p>
         
-        <div class="mockup">
-            App Mockup Will Appear Here
-        </div>
+        <div class="mockup-placeholder"></div>
         
-        <p>HabitZen is the simple, powerful tracker that helps you win your day.<br>Join the waitlist for exclusive early access.</p>
+        <p class="description">
+            HabitZen is the simple, powerful tracker that helps you win your day.<br>
+            Join the waitlist for exclusive early access.
+        </p>
         
-        <!-- PASTE YOUR GOOGLE FORM EMBED CODE HERE -->
         <div class="form-container">
-           <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWLtijgCBrf3dDhLhpPsV_PGAas51willNW7yrTLdd1vtqnA/viewform?embedded=true" width="640" height="407" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <h3 class="form-title">Join the Waitlist</h3>
+            <!-- REPLACE THIS WITH YOUR GOOGLE FORM EMBED CODE -->
+            <div style="background: var(--white); padding: 2rem; border-radius: 12px; border: 1px solid var(--gray-200);">
+                <p style="color: var(--gray-600); margin-bottom: 1rem; font-size: 0.9rem;">📧 Google Form will appear here</p>
+                <div style="background: var(--gray-200); height: 100px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--gray-600);">
+                    Email signup form
+                </div>
+            </div>
         </div>
         
         <footer>
@@ -76,5 +172,4 @@ index.html
         </footer>
     </div>
 </body>
-
 </html>
