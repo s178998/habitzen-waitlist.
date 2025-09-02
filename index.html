@@ -42,6 +42,68 @@
             flex-direction: column;
         }
         
+        /* Instagram Browser Warning */
+        .ig-browser-warning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 10000;
+            padding: 2rem;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ig-warning-content {
+            max-width: 500px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ig-warning-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .ig-warning-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .ig-warning-text {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .ig-warning-button {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--black);
+        }
+        
+        .ig-warning-button:hover {
+            background: transparent;
+            color: var(--black);
+        }
+        
         /* Header */
         .header {
             padding: 1.5rem 5%;
@@ -295,12 +357,12 @@
         
         .form-frame {
             width: 100%;
-            height: 600px;
+            height: 500px;
             border: 1px solid var(--gray-200);
             border-radius: 12px;
             background: var(--white);
         }
-
+        
         /* Footer */
         .footer {
             padding: 4rem 5% 2rem;
@@ -510,6 +572,14 @@
                 padding: 0.6rem 0.8rem;
                 font-size: 0.8rem;
             }
+            
+            .ig-warning-content {
+                padding: 1.5rem;
+            }
+            
+            .ig-warning-title {
+                font-size: 1.5rem;
+            }
         }
         
         /* Animation */
@@ -528,6 +598,22 @@
     </style>
 </head>
 <body>
+    <!-- Instagram Browser Warning -->
+    <div class="ig-browser-warning" id="igWarning">
+        <div class="ig-warning-content">
+            <div class="ig-warning-icon">
+                <i class="fas fa-external-link-alt"></i>
+            </div>
+            <h2 class="ig-warning-title">Open in Browser</h2>
+            <p class="ig-warning-text">For the best experience viewing the HabitZen waitlist, please open this page in your browser instead of the Instagram app.</p>
+            <a href="#" class="ig-warning-button" id="openInBrowser">Open in Browser</a>
+            <p class="ig-warning-text" style="font-size: 0.9rem; margin-top: 1.5rem;">
+                Tap the menu icon (⋮) in the top right and select "Open in Browser"
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <header class="header">
         <a href="#" class="logo">
             <i class="fas fa-leaf logo-icon"></i>
@@ -611,7 +697,6 @@
         </div>
     </section>
     
-    <!-- Form Section with Instagram-safe fallback -->
     <section class="form-section" id="signup">
         <div class="form-container">
             <h2 class="form-title">Get Early Access</h2>
@@ -621,20 +706,13 @@
                 <span class="counter-number">3,142</span> people already joined!
             </div>
             
-            <!-- Google Form -->
-            <iframe 
-              src="https://docs.google.com/forms/d/e/1FAIpQLSeWLtijgCBrf3dDhLhpPsV_PGAas51willNW7yrTLdd1vtqnA/viewform?embedded=true" 
-              class="form-frame">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWLtijgCBrf3dDhLhpPsV_PGAas51willNW7yrTLdd1vtqnA/viewform?embedded=true" 
+                    class="form-frame" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+                Loading…
             </iframe>
-            
-            <!-- Instagram fallback button -->
-            <div class="form-fallback" style="display:none; text-align:center; margin-top:1.5rem;">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWLtijgCBrf3dDhLhpPsV_PGAas51willNW7yrTLdd1vtqnA/viewform" 
-                   class="cta-button" target="_blank" rel="noopener noreferrer">
-                   <i class="fas fa-list-alt button-icon"></i>
-                   Open Waitlist Form
-                </a>
-            </div>
         </div>
     </section>
     
@@ -645,32 +723,176 @@
                 <p>Building better habits for a better you. Simple, effective habit tracking for everyone.</p>
                 <div class="social-links">
                     <a href="https://twitter.com/intent/tweet?text=Check%20out%20HabitZen%20-%20the%20best%20way%20to%20build%20habits!&url=https://habitzen-waitlist.com" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/habitzen/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/habitzen/" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="instagram://user?username=habitzen" class="social-link" id="instagram-link"><i class="fab fa-instagram"></i></a>
+                    <a href="fb://page/?id=habitzen" class="social-link" id="facebook-link"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
             
             <div class="footer-column">
                 <h3 class="footer-heading">Legal</h3>
                 <div class="footer-links">
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#privacy" class="footer-link" onclick="showPrivacy()">Privacy Policy</a>
+                    <a href="#terms" class="footer-link" onclick="showTerms()">Terms of Service</a>
                 </div>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            &copy; 2025 HabitZen. All rights reserved.
+            <p>© 2025 HabitZen. A better way to build routines. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto;">
+        <div style="background: white; margin: 5% auto; padding: 2rem; border-radius: 12px; max-width: 800px; position: relative;">
+            <span style="position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer;" onclick="closeModal()">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p><strong>Last Updated:</strong> January 2025</p>
+            
+            <h3>Summary</h3>
+            <p>We collect minimal data necessary to provide our service. Your data is never sold to third parties. We use industry-standard security measures to protect your information.</p>
+            
+            <h3>Information We Collect</h3>
+            <p>We collect information you provide directly to us, such as when you create an account, including your name, email address, and habit information.</p>
+            
+            <h3>How We Use Your Information</h3>
+            <p>We use your information to provide, maintain, and improve our services, to communicate with you about updates, and to develop new services.</p>
+            
+            <h3>Data Security</h3>
+            <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, or destruction.</p>
+            
+            <h3>Your Rights</h3>
+            <p>You can access, update, or delete your personal information at any time through your account settings or by contacting us.</p>
+            
+            <button onclick="closeModal()" style="background: var(--black); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; margin-top: 1.5rem; cursor: pointer;">Close</button>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="termsModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto;">
+        <div style="background: white; margin: 5% auto; padding: 2rem; border-radius: 12px; max-width: 800px; position: relative;">
+            <span style="position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer;" onclick="closeModal()">&times;</span>
+            <h2>Terms of Service</h2>
+            <p><strong>Last Updated:</strong> January 2025</p>
+            
+            <h3>Summary</h3>
+            <p>By using HabitZen, you agree to these terms. You must be at least 13 years old to use our service. We reserve the right to modify these terms at any time.</p>
+            
+            <h3>Account Responsibility</h3>
+            <p>You are responsible for maintaining the confidentiality of your account and password and for restricting access to your device.</p>
+            
+            <h3>Intellectual Property</h3>
+            <p>The HabitZen service and its original content, features, and functionality are owned by HabitZen and are protected by international copyright, trademark, and other intellectual property laws.</p>
+            
+            <h3>Termination</h3>
+            <p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+            
+            <h3>Limitation of Liability</h3>
+            <p>In no event shall HabitZen, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages resulting from your use of our services.</p>
+            
+            <button onclick="closeModal()" style="background: var(--black); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; margin-top: 1.5rem; cursor: pointer;">Close</button>
+        </div>
+    </div>
+
     <script>
         // Detect Instagram in-app browser
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
-        const isInstagram = /Instagram/.test(ua);
-
-        if(isInstagram){
-            document.querySelector('iframe.form-frame').style.display = 'none';
-            document.querySelector('.form-fallback').style.display = 'block';
+        function isInstagramBrowser() {
+            return navigator.userAgent.includes("Instagram");
+        }
+        
+        // Show Instagram browser warning if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we're in Instagram's browser
+            if (isInstagramBrowser()) {
+                document.getElementById('igWarning').style.display = 'flex';
+            }
+            
+            const animatedElements = document.querySelectorAll('.animated');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                animatedElements.forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 100);
+            
+            // Initialize counter with a realistic number
+            const counterElement = document.querySelector('.counter-number');
+            if (counterElement) {
+                let count = 3142;
+                setInterval(() => {
+                    // Randomly increment the counter occasionally
+                    if (Math.random() > 0.7) {
+                        count += Math.floor(Math.random() * 3) + 1;
+                        counterElement.textContent = count.toLocaleString();
+                    }
+                }, 3000);
+            }
+            
+            // Set up social media links to open apps
+            setupSocialLinks();
+            
+            // Set up open in browser button
+            document.getElementById('openInBrowser').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.open(window.location.href, '_blank');
+            });
+        });
+        
+        // Setup social media links to open apps correctly
+        function setupSocialLinks() {
+            // Instagram link - try to open app, fall back to website
+            const instagramLink = document.getElementById('instagram-link');
+            if (instagramLink) {
+                instagramLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Try to open Instagram app
+                    window.location.href = 'instagram://user?username=habitzen';
+                    
+                    // If app doesn't open, redirect to web after delay
+                    setTimeout(function() {
+                        window.location.href = 'https://www.instagram.com/habitzen/';
+                    }, 500);
+                });
+            }
+            
+            // Facebook link - try to open app, fall back to website
+            const facebookLink = document.getElementById('facebook-link');
+            if (facebookLink) {
+                facebookLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Try to open Facebook app
+                    window.location.href = 'fb://page/?id=habitzen';
+                    
+                    // If app doesn't open, redirect to web after delay
+                    setTimeout(function() {
+                        window.location.href = 'https://www.facebook.com/habitzen/';
+                    }, 500);
+                });
+            }
+        }
+        
+        // Modal functions
+        function showPrivacy() {
+            document.getElementById('privacyModal').style.display = 'block';
+        }
+        
+        function showTerms() {
+            document.getElementById('termsModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('privacyModal').style.display = 'none';
+            document.getElementById('termsModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+            }
         }
     </script>
 </body>
